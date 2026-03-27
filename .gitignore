@@ -25,4 +25,5 @@ dist-ssr
 
 # User specific ignores
 *.md
+!README.md
 temp-vite/
