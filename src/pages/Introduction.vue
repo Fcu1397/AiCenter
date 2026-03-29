@@ -1,99 +1,56 @@
 ﻿<template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
-
-    <!-- 說明段落 -->
-    <section class="text-center max-w-4xl mx-auto">
-      <h1 class="text-4xl font-bold mb-6 text-gray-900">負責任AI執行中心簡介</h1>
-      <p class="text-lg text-gray-600 leading-relaxed">
-        隨著醫療AI落地應用愈發普及，如何有效管控風險、保護資料隱私並維持決策的可解釋性，是本中心成立的首要目標。我們集結了跨領域的專業人才，從技術、法規、臨床到資安，全面建構可信任的醫療AI治理體系。
-      </p>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <!-- 區塊一：中心基本資訊 -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">中心基本資訊</h2>
+      <div class="bg-white shadow-lg rounded-lg p-8 text-lg leading-relaxed text-gray-700">
+        <ul class="space-y-4">
+          <li><strong>中心名稱：</strong>【請填入：中心名稱】</li>
+          <li><strong>成立日期：</strong>【請填入：成立日期】</li>
+          <li><strong>核心使命：</strong>以「安全、透明、可解釋、可監督」為核心價值</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- 團隊4格卡片 -->
+    <!-- 區塊二：團隊成員 -->
     <section>
-      <h2 class="text-2xl font-bold mb-6 text-center">跨領域專家團隊</h2>
+      <h2 class="text-3xl font-bold text-primary text-center mb-8">團隊成員</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a-card hoverable class="text-center">
-          <template #cover>
-            <div class="h-32 bg-blue-100 flex items-center justify-center text-blue-500 text-5xl">
-              <MedicineBoxOutlined />
-            </div>
-          </template>
-          <a-card-meta title="臨床醫師群">
-            <template #description>確認AI於實際醫療場域的適用性、工作流程整合與安全性評估。</template>
-          </a-card-meta>
-        </a-card>
-
-        <a-card hoverable class="text-center">
-          <template #cover>
-            <div class="h-32 bg-green-100 flex items-center justify-center text-green-500 text-5xl">
-              <CodeOutlined />
-            </div>
-          </template>
-          <a-card-meta title="AI工程師與資料科學家">
-            <template #description>負責模型效能驗證、演算法穩定性監控及持續優化。</template>
-          </a-card-meta>
-        </a-card>
-
-        <a-card hoverable class="text-center">
-          <template #cover>
-            <div class="h-32 bg-purple-100 flex items-center justify-center text-purple-500 text-5xl">
-              <SafetyCertificateOutlined />
-            </div>
-          </template>
-          <a-card-meta title="法規與資安專家">
-            <template #description>確保AI應用符合醫療法規及個資保護規範要求，並進行弱點掃描。</template>
-          </a-card-meta>
-        </a-card>
-
-        <a-card hoverable class="text-center">
-          <template #cover>
-            <div class="h-32 bg-orange-100 flex items-center justify-center text-orange-500 text-5xl">
-              <TeamOutlined />
-            </div>
-          </template>
-          <a-card-meta title="醫管及專案管理師">
-            <template #description>管控AI專案進度、資源協調並推動教育訓練與政策佈達。</template>
+        <a-card v-for="i in 4" :key="i" hoverable class="text-center rounded-lg shadow-md">
+          <div class="flex justify-center mb-4">
+            <Placeholder type="avatar" text="📷 請提供：姓名_照片.jpg" />
+          </div>
+          <a-card-meta>
+            <template #title><span class="font-bold">【請填入：姓名】</span></template>
+            <template #description>【請填入：職稱】</template>
           </a-card-meta>
         </a-card>
       </div>
     </section>
 
-    <!-- 三大職責列表 -->
-    <section class="bg-gray-50 p-8 rounded-xl border border-gray-200">
-      <h2 class="text-2xl font-bold mb-8 text-center">中心核心職責</h2>
-      <a-list item-layout="horizontal" :data-source="responsibilities">
-        <template #renderItem="{ item }">
-          <a-list-item>
-            <a-list-item-meta :description="item.desc">
-              <template #title>
-                <span class="text-xl font-semibold text-gray-800">{{ item.title }}</span>
-              </template>
-              <template #avatar>
-                <a-avatar :style="{ backgroundColor: item.color, verticalAlign: 'middle' }" size="large">
-                  {{ item.num }}
-                </a-avatar>
-              </template>
-            </a-list-item-meta>
-          </a-list-item>
-        </template>
-      </a-list>
+    <!-- 區塊三：組織架構示意圖 -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary text-center mb-8">組織架構</h2>
+      <div class="bg-white shadow-lg rounded-lg p-8">
+        <Placeholder type="chart" text="📊 請提供：組織架構圖（PNG/SVG）" height="300px" />
+      </div>
     </section>
 
+    <!-- 區塊四：智慧醫療發展里程碑 -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary text-center mb-8">智慧醫療發展里程碑</h2>
+      <div class="bg-white shadow-lg rounded-lg p-8">
+        <a-timeline mode="alternate">
+          <a-timeline-item color="green">【請填入：年份】<br>【請填入：里程碑說明】</a-timeline-item>
+          <a-timeline-item color="blue">【請填入：年份】<br>【請填入：里程碑說明】</a-timeline-item>
+          <a-timeline-item color="blue">【請填入：年份】<br>【請填入：里程碑說明】</a-timeline-item>
+          <a-timeline-item color="gray">【請填入：年份】<br>【請填入：里程碑說明】</a-timeline-item>
+        </a-timeline>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  MedicineBoxOutlined,
-  CodeOutlined,
-  SafetyCertificateOutlined,
-  TeamOutlined
-} from '@ant-design/icons-vue'
-
-const responsibilities = [
-  { num: '1', title: '全生命週期監管與稽核', desc: '制定AI軟體的開發、測試、上線及退場規範。監控上線後的模型偏移（Data Drift）與成效衰退問題。', color: '#1890ff' },
-  { num: '2', title: '法規遵循與風險評估', desc: '審查AI系統是否符合醫療器材軟體（SaMD）相關法規要求。執行臨床風險分級、資安與個人隱私保護評估。', color: '#52c41a' },
-  { num: '3', title: '教育訓練與透明度推廣', desc: '推廣「負責任AI」理念，針對醫護人員提供AI素養培訓。建立透明的AI產品成效公告平台，降低黑箱疑慮。', color: '#722ed1' }
-]
+import Placeholder from '@/components/shared/Placeholder.vue'
 </script>
