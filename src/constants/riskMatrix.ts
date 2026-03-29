@@ -19,6 +19,8 @@ export const ROLE_LABELS: Record<string, string> = {
 }
 
 export const RISK_COLORS: Record<RiskLevel, string> = {
-  1: 'green', 2: 'blue', 3: 'orange', 4: 'red',
+  1: '#2e7d4f', // 中軍綠
+  2: '#1a4731', // 深軍綠
+  3: '#b8962e', // 金色強調
+  4: '#c0392b', // 緊急/重要 CTA
 }
-

@@ -1,16 +1,16 @@
 <template>
-  <header class="bg-primary text-white shadow-md">
+  <header class="bg-background-card shadow-sm border-b border-line w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
-          <h1 class="text-lg font-semibold">醫院官方網站</h1>
+          <h1 class="text-lg font-bold text-text-primary">OOO醫院</h1>
         </div>
         <div class="hidden md:block">
           <nav class="flex items-center space-x-4">
-            <a href="#" class="hover:text-gray-300">首頁</a>
-            <a href="#" class="hover:text-gray-300">科別介紹</a>
-            <a href="#" class="hover:text-gray-300">就醫指南</a>
-            <a href="#" class="text-white font-bold border-b-2 border-accent">AI中心專區</a>
+            <a href="#" class="text-text-secondary hover:text-primary transition-colors">首頁</a>
+            <a href="#" class="text-text-secondary hover:text-primary transition-colors">科別介紹</a>
+            <a href="#" class="text-text-secondary hover:text-primary transition-colors">就醫指南</a>
+            <a href="#" class="text-primary font-bold border-b-2 border-primary pb-1">智慧醫療</a>
           </nav>
         </div>
       </div>

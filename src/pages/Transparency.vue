@@ -1,9 +1,9 @@
 ﻿<template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-    <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <div class="bg-background-card p-8 rounded-xl shadow-sm border border-line flex flex-col md:flex-row justify-between items-center gap-4">
       <div>
-        <h1 class="text-3xl font-bold text-primary">透明性實時查詢介面</h1>
-        <p class="text-gray-500 mt-2">查詢本院使用中 AI 產品之九大透明性原則揭露聲明</p>
+        <h1 class="text-3xl font-bold text-text-primary">透明性實時查詢介面</h1>
+        <p class="text-text-secondary mt-2">查詢本院使用中 AI 產品之九大透明性原則揭露聲明</p>
       </div>
       <div class="flex gap-4">
         <a-input-search
@@ -26,7 +26,7 @@
       :dataSource="filteredData"
       :columns="columns"
       rowKey="product_id"
-      class="bg-white rounded-xl shadow-sm border border-gray-100"
+      class="bg-background-card rounded-xl shadow-sm border border-line"
       :pagination="{ pageSize: 10 }"
     >
       <template #bodyCell="{ column, record }">
@@ -34,12 +34,12 @@
           <RiskBadge :level="record.risk_level" />
         </template>
         <template v-if="column.key === 'is_active'">
-          <a-tag :color="record.is_active ? 'green' : 'red'">
+          <a-tag :color="record.is_active ? '#10b981' : '#3b82f6'">
             {{ record.is_active ? '運行中' : '已停用' }}
           </a-tag>
         </template>
         <template v-if="column.key === 'action'">
-          <a-button type="link" @click="showDrawer(record)" :icon="h(FileSearchOutlined)">
+          <a-button type="link" @click="showDrawer(record)" :icon="h(FileSearchOutlined)" class="text-primary hover:text-primary-hover">
             檢視原則
           </a-button>
         </template>
@@ -52,31 +52,32 @@
       :title="selectedProduct?.product_name || '透明度報告'"
       placement="right"
       width="600"
+      class="bg-background-card text-text-primary"
     >
       <template #extra>
-        <a-button type="primary" @click="exportPDF">
+        <a-button type="primary" @click="exportPDF" class="bg-accent hover:bg-accent-hover border-none text-white">
           匯出 PDF / 列印
         </a-button>
       </template>
       <div v-if="selectedProduct" class="space-y-6" id="transparency-report">
-        <div class="bg-blue-50 p-4 rounded-lg flex justify-between items-center">
+        <div class="bg-background-page p-4 rounded-lg flex justify-between items-center border border-line">
           <div>
-            <div class="text-sm text-gray-500">負責科別</div>
-            <div class="font-bold">{{ selectedProduct.department }}</div>
+            <div class="text-sm text-text-secondary">負責科別</div>
+            <div class="font-bold text-text-primary">{{ selectedProduct.department }}</div>
           </div>
           <div>
-            <div class="text-sm text-gray-500">更新日期</div>
-            <div class="font-bold">{{ selectedProduct.updated_at }}</div>
+            <div class="text-sm text-text-secondary">更新日期</div>
+            <div class="font-bold text-text-primary">{{ selectedProduct.updated_at }}</div>
           </div>
         </div>
 
         <div>
-          <h3 class="font-bold text-lg mb-4 border-b pb-2 text-primary">九大透明性原則揭露</h3>
+          <h3 class="font-bold text-lg mb-4 border-b border-line pb-2 text-text-primary">九大透明性原則揭露</h3>
           <div v-for="rule in NINE_PRINCIPLES" :key="rule.no" class="mb-6">
-            <h4 class="font-semibold text-primary mb-2">
-              {{ rule.no }}. {{ rule.name }}
+            <h4 class="font-semibold text-text-primary mb-2">
+              <span class="text-primary">{{ rule.no }}.</span> {{ rule.name }}
             </h4>
-            <div class="bg-gray-50 p-4 rounded text-gray-700 text-sm leading-relaxed border border-gray-200">
+            <div class="bg-background-page p-4 rounded text-text-secondary text-sm leading-relaxed border border-line">
               {{ getMockContent(rule.no) }}
             </div>
           </div>
