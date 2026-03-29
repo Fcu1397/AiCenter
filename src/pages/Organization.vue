@@ -1,67 +1,92 @@
 ﻿<template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
-    <h1 class="text-4xl font-bold text-center text-gray-900">組織架構</h1>
-
-    <!-- 組織圖佔位框 -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    <!-- 區塊一：智慧醫療委員會 -->
     <section>
-      <h2 class="text-2xl font-bold mb-6">中心組織架構圖</h2>
-      <Placeholder text="在此放置醫院實際的 AI 中心層級與附屬各組別組織架構圖" />
-    </section>
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">智慧醫療委員會</h2>
+      <div class="bg-white shadow-lg rounded-lg p-8">
+        <h3 class="text-xl font-bold mb-4 border-b pb-2">委員名單</h3>
+        <a-table :dataSource="committeeMembers" :columns="columns" :pagination="false" class="mb-8" />
 
-    <!-- 雙欄基石卡片 -->
-    <section>
-      <h2 class="text-2xl font-bold mb-6">治理基石</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <a-card title="資訊安全治理" :bordered="false" class="shadow-sm border-t-4 border-blue-500">
-          <p class="text-gray-700 leading-relaxed mb-4">
-            AI治理建立在堅實的資訊安全基礎上。本院實施嚴格的資安防護等級規範，從網路架構加密、伺服器隔離到零信任存取控制，並定期執行弱點掃描及滲透測試，以防止惡意攻擊與機敏資料外洩，確保AI演算法及模型參數的完整性。
-          </p>
-        </a-card>
-        <a-card title="資料治理" :bordered="false" class="shadow-sm border-t-4 border-green-500">
-          <p class="text-gray-700 leading-relaxed mb-4">
-            全面採用 <strong>FHIR (Fast Healthcare Interoperability Resources)</strong> 與 <strong>TW Core IG</strong> 國際標準的資料互通架構。我們確保所有用於AI模型訓練與推論的醫療數據，皆具備高標準的品質、正確性與一致性，並落實病患個資去識別化。
-          </p>
-        </a-card>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4 border-b pb-2">委員職掌</h3>
+            <p class="text-gray-700 leading-relaxed">
+              負責本院 AI 醫療應用之政策制定、風險審查、法規遵循督導，以及重大爭議事件之仲裁。確保所有 AI 專案皆符合《負責任 AI 實施指南》之要求。
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4 border-b pb-2">開會頻率</h3>
+            <p class="text-gray-700 leading-relaxed">
+              每季度召開一次例行性會議，針對高風險專案或緊急事件，得視需要隨時召開臨時會議。
+            </p>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-4 border-b pb-2">決議公告</h3>
+        <a-list item-layout="horizontal" :data-source="resolutions">
+          <template #renderItem="{ item }">
+            <a-list-item>
+              <a-list-item-meta :description="item.date">
+                <template #title>
+                  <a href="#">{{ item.title }}</a>
+                </template>
+              </a-list-item-meta>
+            </a-list-item>
+          </template>
+        </a-list>
       </div>
     </section>
 
-    <!-- 5項管理辦法 ACollapse -->
-    <section>
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold">重要管理辦法與規範</h2>
-        <!-- PDF下載按鈕 -->
-        <a-button type="primary">
+    <!-- 區塊二：管理辦法下載 -->
+    <section class="text-center">
+      <div class="bg-white shadow-lg rounded-lg p-8 inline-block">
+        <h2 class="text-2xl font-bold text-primary mb-4">相關管理辦法下載</h2>
+        <a-button type="primary" size="large" class="bg-accent hover:bg-green-600 border-none">
           <template #icon><DownloadOutlined /></template>
-          下載完整規範手冊 (PDF)
+          下載【請填入：院方核定版本 PDF 檔案】
         </a-button>
       </div>
-
-      <a-collapse v-model:activeKey="activeKey" accordion>
-        <a-collapse-panel key="1" header="1. 醫療AI軟體採購與導入評估辦法">
-          <p>規範各科部在引進外部AI產品或套件前，必須先提報完整的使用情境、預期效益與初步風險評估報告，由工作小組進行法規與資安初審。</p>
-        </a-collapse-panel>
-        <a-collapse-panel key="2" header="2. 自行開發AI系統管理規範">
-          <p>針對院內自行研發之模型，從數據收集、標註、清洗到模型訓練與驗證，皆需符合醫學倫理與個資法規範，並需將效能指標列入審查。</p>
-        </a-collapse-panel>
-        <a-collapse-panel key="3" header="3. AI臨床風險分級與審查機制">
-          <p>依據預期用途之「醫療決策重要程度」及「病患狀況嚴重程度」，將AI軟體分為 1 至 4 級。3級以上屬高風險，需送交IRB或特別委員會審議。</p>
-        </a-collapse-panel>
-        <a-collapse-panel key="4" header="4. 透明性揭露與使用宣導規範">
-          <p>明定上線的AI產品必須對臨床人員揭露九大透明度原則（如介入目的、效能指標、警示超範圍等），防止對AI產生過度依賴。</p>
-        </a-collapse-panel>
-        <a-collapse-panel key="5" header="5. 上線後持續監管與退場機制">
-          <p>AI系統上線後需定期（如每季）監控預測準確率與實際成效。若發生嚴重偏移或危安事件，應啟動緊急停用與退場重訓流程。</p>
-        </a-collapse-panel>
-      </a-collapse>
     </section>
 
+    <!-- 區塊三：資料治理架構 -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary mb-6 text-center">資料治理架構</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white shadow-lg rounded-lg p-8">
+          <h3 class="text-xl font-bold mb-4 border-b pb-2">標準相容性</h3>
+          <ul class="space-y-4 text-gray-700 leading-relaxed">
+            <li class="flex items-start"><span class="text-accent mr-3">✔</span>採用 FHIR 國際醫療資料交換標準</li>
+            <li class="flex items-start"><span class="text-accent mr-3">✔</span>導入 TW Core IG 相容資料集</li>
+            <li class="flex items-start"><span class="text-accent mr-3">✔</span>支援 SMART on FHIR 應用程式</li>
+            <li class="flex items-start"><span class="text-accent mr-3">✔</span>臨床術語標準：SNOMED CT、LOINC、RxNorm</li>
+          </ul>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-8 flex items-center justify-center">
+          <Placeholder type="chart" text="📊 請提供：FHIR 資料治理架構圖" height="100%" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { DownloadOutlined } from '@ant-design/icons-vue'
 import Placeholder from '@/components/shared/Placeholder.vue'
 
-const activeKey = ref('1')
+const columns = [
+  { title: '姓名', dataIndex: 'name', key: 'name' },
+  { title: '職稱', dataIndex: 'title', key: 'title' },
+  { title: '所屬科別', dataIndex: 'dept', key: 'dept' },
+]
+
+const committeeMembers = [
+  { key: '1', name: '【請填入：姓名】', title: '【請填入：職稱】', dept: '【請填入：所屬科別】' },
+  { key: '2', name: '【請填入：姓名】', title: '【請填入：職稱】', dept: '【請填入：所屬科別】' },
+  { key: '3', name: '【請填入：姓名】', title: '【請填入：職稱】', dept: '【請填入：所屬科別】' },
+]
+
+const resolutions = [
+  { title: '【請填入：歷次會議紀錄標題一】', date: '2023-10-01' },
+  { title: '【請填入：歷次會議紀錄標題二】', date: '2023-07-15' },
+]
 </script>
