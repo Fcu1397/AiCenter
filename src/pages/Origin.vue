@@ -5,10 +5,10 @@
       <h2 class="text-3xl font-bold text-text-primary mb-6 text-center">成立緣由</h2>
       <div class="bg-background-card shadow-sm border border-line rounded-lg p-8 text-lg leading-relaxed text-text-secondary">
         <p class="mb-4">
-          隨 AI 醫療應用普及，若缺乏健全的治理機制，可能引發潛在的倫理與監管風險。
+          隨著 AI 醫療應用的普及，若缺乏完善的治理機制，可能引發倫理與監管風險。本院依循衛福部《負責任AI實施指南》及「健康台灣深耕計畫」的指導，成立「負責任AI中心」，致力於建立安全、透明且值得信賴的智慧醫療環境。
         </p>
-        <p>
-          為此，本院依循衛福部《負責任AI實施指南》及「健康台灣深耕計畫」之指導，特成立「負責任AI中心」，旨在建立一個安全、透明且值得信賴的智慧醫療環境。
+        <p class="mb-4">
+          為推動數位轉型與智慧醫療技術應用，本院設立「智慧醫療委員會」，以確保醫療AI的透明性與可信性，提升使用者信任，並落實安全管理、倫理規範及資通訊安全。
         </p>
       </div>
     </section>
