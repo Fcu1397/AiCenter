@@ -4,6 +4,14 @@
       <h1 class="text-3xl font-bold text-text-primary mb-4">標準化流程圖及申請途徑</h1>
     </div>
 
+    <!-- 申請流程圖區塊 -->
+    <section class="text-center">
+      <!-- 暫時的佔位圖 -->
+      <img src="https://placehold.co/800x400?text=Application+Process+Placeholder" alt="申請流程圖佔位" class="mx-auto rounded-lg shadow-md w-full max-w-4xl" />
+      <!-- 未來的實際圖片路徑程式碼 (先註解隱藏) -->
+      <!-- <img src="@/assets/images/application-process.png" alt="申請流程圖" class="mx-auto rounded-lg shadow-md w-full max-w-4xl" /> -->
+    </section>
+
     <!-- 區塊一：線上申請入口 -->
     <section class="text-center">
       <router-link to="/apply">

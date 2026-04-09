@@ -5,7 +5,7 @@
       <h2 class="text-3xl font-bold text-text-primary mb-6 text-center">中心基本資訊</h2>
       <div class="bg-background-card shadow-sm border border-line rounded-lg p-8 text-lg leading-relaxed text-text-secondary">
         <ul class="space-y-4">
-          <li class="text-text-primary"><strong>中心名稱：</strong>【請填入：中心名稱】</li>
+          <li class="text-text-primary"><strong>中心名稱：</strong>負責任AI中心</li>
           <li class="text-text-primary"><strong>成立日期：</strong>【請填入：成立日期】</li>
           <li class="text-text-primary"><strong>核心使命：</strong>以「安全、透明、可解釋、可監督」為核心價值</li>
         </ul>
@@ -13,7 +13,7 @@
     </section>
 
     <!-- 區塊二：團隊成員 -->
-    <section>
+    <!-- <section>
       <h2 class="text-3xl font-bold text-text-primary text-center mb-8">團隊成員</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <a-card v-for="i in 4" :key="i" hoverable class="text-center rounded-lg shadow-sm bg-background-card border-line hover:shadow-md transition-shadow">
@@ -26,12 +26,14 @@
           </a-card-meta>
         </a-card>
       </div>
-    </section>
+    </section> -->
 
     <!-- 區塊三：組織架構示意圖 -->
     <section>
       <h2 class="text-3xl font-bold text-text-primary text-center mb-8">組織架構</h2>
       <div class="bg-background-card shadow-sm border border-line rounded-lg p-8">
+        <!-- 圖片路徑已加入，但目前仍顯示 Placeholder -->
+        <!-- <img src="@/assets/organization-chart.png" alt="組織架構圖" class="w-full h-auto" /> -->
         <Placeholder type="chart" text="📊 請提供：組織架構圖（PNG/SVG）" height="300px" />
       </div>
     </section>

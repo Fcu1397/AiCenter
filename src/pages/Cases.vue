@@ -10,7 +10,7 @@
     <!-- Product Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <a-card
-        v-for="product in MOCK_PRODUCTS"
+        v-for="product in REAL_PRODUCTS"
         :key="product.product_id"
         hoverable
         class="bg-background-card flex flex-col h-full rounded-xl overflow-hidden shadow-sm transition-transform transform hover:-translate-y-1 border-line hover:shadow-md"
@@ -31,11 +31,19 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { MOCK_PRODUCTS } from '@/mock/products'
 
 const router = useRouter()
 
 const goToDetail = (id: number) => {
   router.push(`/cases/${id}`)
 }
+
+const REAL_PRODUCTS = [
+  {
+    product_id: 1,
+    product_name: 'AI心電圖輔助判讀',
+    department: '內科',
+    is_active: true,
+  },
+]
 </script>
